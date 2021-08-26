@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cos.playground">
+    <!-- 인터넷 접속권한 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Playground"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".View.Community.CBoardWriteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Community.CBoardUpdateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Community.RBoardListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Community.CBoardListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.auth.FindPwActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.auth.FindIdActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.auth.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.auth.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Community.CBoardDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.Community.RBoardDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.User.UserInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.auth.JoinActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.LaunchingAppActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
