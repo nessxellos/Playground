@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (cm.getCode()==1) {
                         Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                         SessionUser.user = cm.getData();
-                        SessionUser.SessionId = cm.getCode();
+                        SessionUser.sessionId = cm.getCode();
                         Intent intent = new Intent(
                                 mContext,
                                 MainActivity.class

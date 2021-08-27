@@ -1,6 +1,7 @@
 package com.cos.playground.Controller;
 
 import com.cos.playground.Controller.DTO.BoardUpdateDto;
+import com.cos.playground.Controller.DTO.BoardWriteDto;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.service.BoardService;
@@ -20,4 +21,7 @@ public class BoardController {
 
     public Call<CMRespDto<CBoard>> deleteById(int id) { return boardService.deleteById(id);}
 
+    public Call<CMRespDto<CBoard>> write(BoardWriteDto boardWriteDto) {
+        return boardService.write(boardWriteDto);
+    }
 }

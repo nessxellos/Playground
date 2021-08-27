@@ -55,7 +55,6 @@ public class JoinActivity extends AppCompatActivity {
         join_name = findViewById(R.id.join_name);
         join_password = findViewById(R.id.join_password);
         BNav = findViewById(R.id.bottomNavigation);
-
     }
 
     public void initLr(){

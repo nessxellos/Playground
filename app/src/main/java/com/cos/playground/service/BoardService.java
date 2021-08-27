@@ -1,6 +1,7 @@
 package com.cos.playground.service;
 
 import com.cos.playground.Controller.DTO.BoardUpdateDto;
+import com.cos.playground.Controller.DTO.BoardWriteDto;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 
@@ -23,6 +24,9 @@ public interface BoardService {
 
     @DELETE("/cBoard/delete/{id}")
     Call<CMRespDto<CBoard>> deleteById(@Path("id") int id);
+
+    @PUT("/cBoard/write")
+    Call<CMRespDto<CBoard>> write(@Body BoardWriteDto boardWriteDto);
 
     Retrofit retrofit = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

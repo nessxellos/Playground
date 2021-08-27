@@ -19,6 +19,7 @@ public class CBoard implements Serializable {
     private int userId; // fk
     private String writer;
     private List<Comment> comments;
+    private String category;
 
 
 }
