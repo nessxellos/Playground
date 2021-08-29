@@ -1,22 +1,18 @@
-package com.cos.playground.Model;
-
-import java.io.Serializable;
-import java.sql.Timestamp;
+package com.cos.playground.Controller.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
-    private int id;
+@Data
+public class JoinDto {
+
     private String username;
     private String password;
     private String name;
-    private String email;
     private String phone;
     private String career;
-    private Timestamp date;
+    private String email;
 }

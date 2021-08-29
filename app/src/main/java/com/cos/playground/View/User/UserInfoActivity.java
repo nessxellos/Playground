@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.User;
@@ -21,6 +25,7 @@ public class UserInfoActivity extends AppCompatActivity {
     private UserInfoActivity mContext = UserInfoActivity.this;
 
     private Button btnUpdateInfo, btnLogout;
+    private ImageView ivUserProfile;
 
     private UserController userController;
     private User user;
@@ -39,21 +44,34 @@ public class UserInfoActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
         btnUpdateInfo = findViewById(R.id.btnUpdateInfo);
         userController = new UserController();
+        ivUserProfile = findViewById(R.id.ivUserProfile);
+
     }
 
     public void intiLr(){
-        btnLogout.setOnClickListener(v->{
+        btnUpdateInfo.setOnClickListener(v->{
+            Intent intent = new Intent(
+                    mContext,
+                    UserUpdateActivity.class
+            );
+            // 세션차원에서 유저데이터 관리
+//            intent.putExtra("user", user);
+            mContext.startActivity(intent);
+        });
+        btnLogout.setOnClickListener(v-> {
+            if (SessionUser.sessionId.equals("user=authorized")) {
+
             new AlertDialog.Builder(mContext)
                     .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
                     .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            SessionUser.sessionId=0;
-                            SessionUser.user=null;
+                            SessionUser.sessionId = "";
+                            SessionUser.user = null;
                             Intent intent = new Intent(
                                     mContext,
                                     MainActivity.class
                             );
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
                         }
                     })
@@ -63,6 +81,11 @@ public class UserInfoActivity extends AppCompatActivity {
                         }
                     })
                     .show();
+            } else{
+                Toast.makeText(getApplicationContext(), "로그인 정보가 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         });
     }
+
 }

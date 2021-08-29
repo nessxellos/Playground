@@ -16,56 +16,100 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_username">
 
-                <AutoCompleteTextView
-                    android:id="@+id/join_email"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="이메일"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Enter Username"
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_password">
 
-                <EditText
-                    android:id="@+id/join_password"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="비밀번호"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Enter Password"
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_name">
 
-                <EditText
-                    android:id="@+id/join_name"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfName"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:hint="이름"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Enter Name"
+                    android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Enter PhoneNumber"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/ic_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Enter E-Mail"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:startIconDrawable="@drawable/ic_career"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfCareer"
+                    android:hint="Enter Career"
+                    android:inputType="textMultiLine"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/join_button"

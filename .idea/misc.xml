@@ -14,16 +14,18 @@
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_detail.xml" value="0.11927083333333334" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_list.xml" value="0.11927083333333334" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_update.xml" value="0.11927083333333334" />
-        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_write.xml" value="0.3573667711598746" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_write.xml" value="0.18" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_hboard.xml" value="0.11927083333333334" />
-        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_join.xml" value="0.213768115942029" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_join.xml" value="0.253077975376197" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_launching_app.xml" value="0.1" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_main2.xml" value="0.1671195652173913" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_rboard_list.xml" value="0.1046875" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_user_info.xml" value="0.21" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_user_update.xml" value="0.11875" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/bottom_bar.xml" value="0.67" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/cboard_list_item.xml" value="0.11875" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/menu/bottom_navbar.xml" value="0.19479166666666667" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/mipmap-anydpi-v26/ic_hire.xml" value="0.2109375" />
       </map>

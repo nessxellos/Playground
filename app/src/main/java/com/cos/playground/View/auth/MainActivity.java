@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.cos.playground.Model.User;
@@ -34,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnWrite = findViewById(R.id.btnWrite);
         btnInfo = findViewById(R.id.btnInfo);
+        // 로그인 세션 없을시 버튼 비활성화
+        if(SessionUser.sessionId==null){
+            btnInfo.setVisibility(View.GONE);
+        }
     }
 
     private void initLr(){

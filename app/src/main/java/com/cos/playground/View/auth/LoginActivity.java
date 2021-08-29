@@ -16,6 +16,7 @@ import com.cos.playground.config.SessionUser;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import okhttp3.Headers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,17 +61,20 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<CMRespDto<User>> call, Response<CMRespDto<User>> response) {
                     CMRespDto<User> cm = response.body();
-                    if (cm.getCode()==1) {
+                    Headers header = response.headers();
+                    String cookie = header.get("Set-Cookie");
+                    cookie = cookie.substring(0,15);
+                    if (cookie.equals("user=authorized")) {
                         Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                         SessionUser.user = cm.getData();
-                        SessionUser.sessionId = cm.getCode();
+                        SessionUser.sessionId = cookie;
                         Intent intent = new Intent(
                                 mContext,
                                 MainActivity.class
                         );
                         startActivity(intent);
                     } else if (cm.getCode()==2){
-                        Toast.makeText(getApplicationContext(), "ID 혹은 Password가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "ID 혹은 password가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }

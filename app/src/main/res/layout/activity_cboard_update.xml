@@ -52,7 +52,7 @@
 
         <!--버튼 높이 60 고정-->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnUpdate"
+            android:id="@+id/btnUCBoard"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="수정완료" />

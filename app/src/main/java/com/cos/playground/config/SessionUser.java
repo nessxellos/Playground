@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class SessionUser {
     public static User user;
-    public static int sessionId;
+    public static String sessionId;
 }

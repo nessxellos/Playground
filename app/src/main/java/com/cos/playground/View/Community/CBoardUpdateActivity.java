@@ -22,7 +22,7 @@ public class CBoardUpdateActivity extends AppCompatActivity {
     private static final String TAG = "cBoardUp";
     private CBoardUpdateActivity mContext = CBoardUpdateActivity.this;
 
-    private MaterialButton btnUpdate;
+    private MaterialButton btnUCBoard;
     private TextInputEditText tfTitle, tfContent;
 
     private BoardController boardController;
@@ -41,13 +41,13 @@ public class CBoardUpdateActivity extends AppCompatActivity {
 
     public void init(){
         boardController = new BoardController();
-        btnUpdate = findViewById(R.id.btnUpdate);
+        btnUCBoard = findViewById(R.id.btnUCBoard);
         tfTitle = findViewById(R.id.tfTitle);
         tfContent = findViewById(R.id.tfContent);
     }
 
     public void initLr(){
-        btnUpdate.setOnClickListener(v->{
+        btnUCBoard.setOnClickListener(v->{
             BoardUpdateDto boardUpdateDto = new BoardUpdateDto(
                     tfTitle.getText().toString(),
                     tfContent.getText().toString()

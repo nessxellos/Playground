@@ -6,6 +6,8 @@ import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.service.BoardService;
 
+import java.util.List;
+
 import retrofit2.Call;
 
 public class BoardController {
@@ -23,5 +25,9 @@ public class BoardController {
 
     public Call<CMRespDto<CBoard>> write(BoardWriteDto boardWriteDto) {
         return boardService.write(boardWriteDto);
+    }
+
+    public Call<CMRespDto<List<CBoard>>> findAll(){
+        return boardService.findAll();
     }
 }

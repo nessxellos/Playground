@@ -5,6 +5,8 @@ import com.cos.playground.Controller.DTO.BoardWriteDto;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -27,6 +29,9 @@ public interface BoardService {
 
     @PUT("/cBoard/write")
     Call<CMRespDto<CBoard>> write(@Body BoardWriteDto boardWriteDto);
+
+    @GET("/cBoard")
+    Call<CMRespDto<List<CBoard>>> findAll();
 
     Retrofit retrofit = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
