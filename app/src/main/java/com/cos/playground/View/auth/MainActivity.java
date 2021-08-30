@@ -39,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         if(SessionUser.sessionId==null){
             btnInfo.setVisibility(View.GONE);
         }
+        if(SessionUser.sessionId!=null){
+            btnJoin.setVisibility(View.GONE);
+            btnLogin.setVisibility(View.GONE);
+        }
     }
 
     private void initLr(){

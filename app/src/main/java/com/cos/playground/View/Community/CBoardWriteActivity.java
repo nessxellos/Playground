@@ -18,6 +18,7 @@ import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.R;
 import com.cos.playground.View.auth.MainActivity;
+import com.cos.playground.config.SessionUser;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -88,11 +89,11 @@ public class CBoardWriteActivity extends AppCompatActivity {
                 focusView = tfTitle;
                 cancel = true;
             }
-            Log.d(TAG, "initLr: "+content+title+category);
+//            Log.d(TAG, "initLr: "+content+title+category);
             if (cancel) {
                 focusView.requestFocus();
             } else {
-                boardController.write(new BoardWriteDto(title, content, category)).enqueue(new Callback<CMRespDto<CBoard>>() {
+                boardController.write(new BoardWriteDto(title, content, category, SessionUser.user.getId())).enqueue(new Callback<CMRespDto<CBoard>>() {
                     @Override
                     public void onResponse(Call<CMRespDto<CBoard>> call, Response<CMRespDto<CBoard>> response) {
                         CMRespDto<CBoard> cm = response.body();

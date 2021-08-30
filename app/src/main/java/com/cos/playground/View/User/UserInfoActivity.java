@@ -65,7 +65,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
                     .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            SessionUser.sessionId = "";
+                            SessionUser.sessionId = null;
                             SessionUser.user = null;
                             Intent intent = new Intent(
                                     mContext,

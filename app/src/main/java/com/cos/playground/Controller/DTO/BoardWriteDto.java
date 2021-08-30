@@ -11,4 +11,5 @@ public class BoardWriteDto {
     private String title;
     private String content;
     private String category;
+    private int userId;
 }

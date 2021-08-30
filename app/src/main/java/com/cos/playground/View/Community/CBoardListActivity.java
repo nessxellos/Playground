@@ -59,9 +59,10 @@ public class CBoardListActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CMRespDto<List<CBoard>>> call, Response<CMRespDto<List<CBoard>>> response) {
                 CMRespDto<List<CBoard>> cm = response.body();
-                if(cm.getCode() == 1){
-                    cBoardListAdapter.addItems(cm.getData());
-                }
+                cBoardListAdapter.addItems(cm.getData());
+//                if(cm.getCode() == 1){
+//                    cBoardListAdapter.addItems(cm.getData());
+//                }
             }
 
             @Override

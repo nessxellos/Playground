@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                                 MainActivity.class
                         );
                         startActivity(intent);
-                    } else if (cm.getCode()==2){
+                    } else if (cm.getCode()==-1){
                         Toast.makeText(getApplicationContext(), "ID 혹은 password가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                     }
 
