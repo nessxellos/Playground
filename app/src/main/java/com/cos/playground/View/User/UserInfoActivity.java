@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cos.playground.Controller.DTO.CMRespDto;
@@ -31,8 +32,10 @@ public class UserInfoActivity extends AppCompatActivity {
     private static final String TAG = "UserInfo";
     private UserInfoActivity mContext = UserInfoActivity.this;
 
-    private Button btnUpdateInfo, btnLogout, btnRemove;
+    private Button btnUpdateInfo, btnLogout, btnRemove, btnLikeboard,
+                    btnBookmarked, btnMyboard, btnMyreply;
     private ImageView ivUserProfile;
+    private TextView tvUsername, tvPhone, tvEmail, tvCareer;
 
     private UserController userController;
     private User user;
@@ -45,12 +48,22 @@ public class UserInfoActivity extends AppCompatActivity {
 
         init();
         intiLr();
+        initData();
     }
 
     public void init(){
         btnLogout = findViewById(R.id.btnLogout);
         btnUpdateInfo = findViewById(R.id.btnUpdateInfo);
         btnRemove = findViewById(R.id.btnRemove);
+        btnLikeboard = findViewById(R.id.btnLikeboard);
+        btnBookmarked = findViewById(R.id.btnBookmarked);
+        btnMyboard = findViewById(R.id.btnMyboard);
+        btnMyreply = findViewById(R.id.btnMyreply);
+
+        tvCareer = findViewById(R.id.tvCareer);
+        tvUsername = findViewById(R.id.tvUsername);
+        tvPhone = findViewById(R.id.tvPhone);
+        tvEmail = findViewById(R.id.tvEmail);
         userController = new UserController();
         ivUserProfile = findViewById(R.id.ivUserProfile);
     }
@@ -140,6 +153,13 @@ public class UserInfoActivity extends AppCompatActivity {
                 }
             });
         });
+    }
+
+    public void initData(){
+        tvUsername.setText(SessionUser.user.getUsername());
+        tvCareer.setText(SessionUser.user.getCareer());
+        tvEmail.setText(SessionUser.user.getEmail());
+        tvPhone.setText(SessionUser.user.getPhone());
     }
 
 }
