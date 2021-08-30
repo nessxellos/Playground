@@ -3,6 +3,7 @@ package com.cos.playground.Controller;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Controller.DTO.JoinDto;
 import com.cos.playground.Controller.DTO.LoginDto;
+import com.cos.playground.Controller.DTO.RemoveDto;
 import com.cos.playground.Model.User;
 import com.cos.playground.service.AuthService;
 import com.cos.playground.service.UserService;
@@ -19,5 +20,9 @@ public class UserController {
 
     public Call<CMRespDto<User>> update(JoinDto joinDto){
         return userService.update(joinDto);
+    }
+
+    public Call<CMRespDto<User>> deleteByUsername(RemoveDto removeDto){
+        return userService.deleteByUsername(removeDto);
     }
 }
