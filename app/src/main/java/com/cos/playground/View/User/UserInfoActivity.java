@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -65,14 +66,34 @@ public class UserInfoActivity extends AppCompatActivity {
                     .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
                     .setPositiveButton("로그아웃", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            SessionUser.sessionId = null;
-                            SessionUser.user = null;
-                            Intent intent = new Intent(
-                                    mContext,
-                                    MainActivity.class
-                            );
+                           new AlertDialog.Builder(mContext)
+                            .setTitle("로그아웃 완료").setMessage("").setNeutralButton("확인",new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                SessionUser.sessionId = null;
+                                SessionUser.user = null;
+                                Intent intent = new Intent(
+                                        mContext,
+                                        MainActivity.class
+                                );
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
+                                }
+                           }).create().show();
+
+                            //시간지연 후 이동
+//                            Handler handler = new Handler();
+//                            handler.postDelayed(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    Intent intent = new Intent(
+//                                            mContext,
+//                                            MainActivity.class
+//                                    );
+//                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                                    startActivity(intent);
+//                                }
+//                            }, 2000);
+
                         }
                     })
                     .setNegativeButton("취소", new DialogInterface.OnClickListener() {
