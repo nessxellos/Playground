@@ -20,6 +20,24 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private MainActivity mContext = MainActivity.this;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(SessionUser.sessionId==null){
+            btnInfo.setVisibility(View.GONE);
+            btnWrite.setVisibility(View.GONE);
+        } else {
+            btnInfo.setVisibility(View.VISIBLE);
+            btnWrite.setVisibility(View.VISIBLE);
+        }
+        if(SessionUser.sessionId!=null){
+            btnJoin.setVisibility(View.GONE);
+            btnLogin.setVisibility(View.GONE);
+        } else {
+            btnJoin.setVisibility(View.VISIBLE);
+            btnLogin.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnWrite = findViewById(R.id.btnWrite);
         btnInfo = findViewById(R.id.btnInfo);
         // 로그인 세션 없을시 버튼 비활성화
-        if(SessionUser.sessionId==null){
-            btnInfo.setVisibility(View.GONE);
-        }
-        if(SessionUser.sessionId!=null){
-            btnJoin.setVisibility(View.GONE);
-            btnLogin.setVisibility(View.GONE);
-        }
+
     }
 
     private void initLr(){
