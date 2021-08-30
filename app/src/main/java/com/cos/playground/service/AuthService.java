@@ -1,6 +1,7 @@
 package com.cos.playground.service;
 
 import com.cos.playground.Controller.DTO.CMRespDto;
+import com.cos.playground.Controller.DTO.DetailDto;
 import com.cos.playground.Controller.DTO.JoinDto;
 import com.cos.playground.Controller.DTO.LoginDto;
 import com.cos.playground.Model.CBoard;
@@ -31,8 +32,8 @@ public interface AuthService {
     @GET("/cboard/list")
     Call<CMRespDto<List<CBoard>>> findAll();
 
-    @GET("/cboard/detail/{id}")
-    Call<CMRespDto<CBoard>> findById(@Path("id") int id);
+    @POST("/cboard/detail/{id}")
+    Call<CMRespDto<CBoard>> findById(@Path("id") int id, @Body DetailDto detailDto);
 
 
 

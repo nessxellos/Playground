@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import com.cos.playground.Controller.BoardController;
 import com.cos.playground.Controller.DTO.CMRespDto;
+import com.cos.playground.Controller.DTO.DetailDto;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.R;
+import com.cos.playground.config.SessionUser;
 import com.google.android.material.button.MaterialButton;
 
 import retrofit2.Call;
@@ -33,7 +35,6 @@ public class CBoardDetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         initData();
-
     }
 
     @Override
@@ -94,7 +95,11 @@ public class CBoardDetailActivity extends AppCompatActivity {
     }
 
     public void initData(){
-        boardController.findById(cBoardId).enqueue(new Callback<CMRespDto<CBoard>>() {
+        DetailDto detailDto = new DetailDto();
+        if(SessionUser.user!=null){
+        detailDto.setId(SessionUser.user.getId());
+        } else { detailDto.setId(0);}
+        boardController.findById(cBoardId, detailDto).enqueue(new Callback<CMRespDto<CBoard>>() {
             @Override
             public void onResponse(Call<CMRespDto<CBoard>> call, Response<CMRespDto<CBoard>> response) {
                 CMRespDto<CBoard> cm = response.body();

@@ -10,13 +10,14 @@ import android.widget.Button;
 
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
+import com.cos.playground.View.Community.CBoardListActivity;
 import com.cos.playground.View.Community.CBoardWriteActivity;
 import com.cos.playground.View.User.UserInfoActivity;
 import com.cos.playground.config.SessionUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnJoin, btnLogin, btnWrite, btnInfo;
+    private Button btnJoin, btnLogin, btnWrite, btnInfo, btnBoardlist;
     private static final String TAG = "MainActivity";
     private MainActivity mContext = MainActivity.this;
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnWrite = findViewById(R.id.btnWrite);
         btnInfo = findViewById(R.id.btnInfo);
+        btnBoardlist = findViewById(R.id.btnBoardlist);
         // 로그인 세션 없을시 버튼 비활성화
 
     }
@@ -86,6 +88,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(
                     mContext,
                     UserInfoActivity.class
+            );
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+        btnBoardlist.setOnClickListener(v->{
+            Intent intent = new Intent(
+                    mContext,
+                    CBoardListActivity.class
             );
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
