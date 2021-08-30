@@ -50,8 +50,12 @@ public class CBoardListActivity extends AppCompatActivity {
     }
 
     public void initAdapter(){
-        rvLayoutManager = new LinearLayoutManager(mContext, RecyclerView.VERTICAL, false);
+        rvLayoutManager = new LinearLayoutManager(
+                mContext, RecyclerView.VERTICAL, false);
+        rvCBoardList.setLayoutManager(rvLayoutManager);
 
+        cBoardListAdapter = new CBoardListAdapter(mContext);
+        rvCBoardList.setAdapter(cBoardListAdapter);
     }
 
     public void initData() {

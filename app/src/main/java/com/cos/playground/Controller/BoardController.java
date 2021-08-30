@@ -4,6 +4,7 @@ import com.cos.playground.Controller.DTO.BoardUpdateDto;
 import com.cos.playground.Controller.DTO.BoardWriteDto;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
+import com.cos.playground.service.AuthService;
 import com.cos.playground.service.BoardService;
 
 import java.util.List;
@@ -14,8 +15,9 @@ public class BoardController {
 
     private static final String TAG = "BoardCon";
     private BoardService boardService = BoardService.boardService;
+    private AuthService authService = AuthService.authService;
 
-    public Call<CMRespDto<CBoard>> findById(int id) { return boardService.findById(id);}
+    public Call<CMRespDto<CBoard>> findById(int id) { return authService.findById(id);}
 
     public Call<CMRespDto<CBoard>> update(int id, BoardUpdateDto boardUpdateDto) {
         return boardService.update(id, boardUpdateDto);
@@ -28,6 +30,6 @@ public class BoardController {
     }
 
     public Call<CMRespDto<List<CBoard>>> findAll(){
-        return boardService.findAll();
+        return authService.findAll();
     }
 }

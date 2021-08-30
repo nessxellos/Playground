@@ -21,8 +21,6 @@ import retrofit2.http.Path;
 
 public interface BoardService {
 
-    @GET("/cboard/detail/{id}")
-    Call<CMRespDto<CBoard>> findById(@Path("id") int id);
 
     @PUT("/cboard/update/{id}")
     Call<CMRespDto<CBoard>> update(@Path("id") int id, @Body BoardUpdateDto boardUpdateDto);
@@ -33,8 +31,6 @@ public interface BoardService {
     @POST("/cboard/write")
     Call<CMRespDto<CBoard>> write(@Body BoardWriteDto boardWriteDto);
 
-    @GET("/cboard")
-    Call<CMRespDto<List<CBoard>>> findAll();
 
 
 

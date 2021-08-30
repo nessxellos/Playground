@@ -61,7 +61,7 @@ public class CBoardListAdapter extends RecyclerView.Adapter<CBoardListAdapter.My
 
     // ViewHolder 데이터 갈아끼우는 친구
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(CBoardListAdapter.MyViewHolder holder, int position) {
         CBoard cBoard = cBoards.get(position);
         holder.setItem(cBoard);
     }
