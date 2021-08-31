@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
+
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -23,6 +21,7 @@ import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
 import com.cos.playground.View.BottomNavbar;
+import com.cos.playground.View.auth.LoginActivity;
 import com.cos.playground.View.auth.MainActivity;
 import com.cos.playground.config.SessionUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -63,7 +62,7 @@ public class UserInfoActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(
                             mContext,
-                            MainActivity.class
+                            LoginActivity.class
                     );
                     startActivity(intent);
                 }

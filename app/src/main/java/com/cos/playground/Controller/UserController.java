@@ -2,6 +2,7 @@ package com.cos.playground.Controller;
 
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Controller.DTO.JoinDto;
+import com.cos.playground.Controller.DTO.Fav;
 import com.cos.playground.Controller.DTO.LoginDto;
 import com.cos.playground.Controller.DTO.RemoveDto;
 import com.cos.playground.Model.User;
@@ -25,4 +26,6 @@ public class UserController {
     public Call<CMRespDto<User>> deleteByUsername(RemoveDto removeDto){
         return userService.deleteByUsername(removeDto);
     }
+
+    public Call<CMRespDto<Fav>> likeById(Fav fav){ return userService.likeById(fav);}
 }

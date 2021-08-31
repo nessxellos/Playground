@@ -183,12 +183,13 @@
             android:id="@+id/ic_Like"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/ic_nolike"
+            android:background="@drawable/like_status"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
 
         <TextView
+            android:id="@+id/tvLike"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginStart="4dp"

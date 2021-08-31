@@ -4,22 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cos.playground.Controller.BoardController;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Controller.DTO.DetailDto;
+import com.cos.playground.Controller.DTO.Fav;
+import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.CBoard;
+import com.cos.playground.Model.User;
 import com.cos.playground.R;
 import com.cos.playground.View.BottomNavbar;
 import com.cos.playground.config.SessionUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,11 +40,12 @@ public class CBoardDetailActivity extends AppCompatActivity {
 
     private static final int ACTIVITY_NUM =1;
     private Button btnDelete, btnUpdateForm;
-    private TextView tvDetailUsername, tvDetailEmail, tvDetailCategory, tvDetailRegdate,
+    private TextView tvDetailUsername, tvDetailEmail, tvDetailCategory, tvDetailRegdate, tvLike,
                     tvDetailTitle, tvDetailContent, tvViewCount, tvLikeCount, ic_Like, ic_Reply;
     private ImageView ivUserProfile, ivFile;
 
     private BoardController boardController;
+    private UserController userController;
     private CBoard cBoard;
     private int cBoardId;
 
@@ -60,9 +66,12 @@ public class CBoardDetailActivity extends AppCompatActivity {
         initbtbar();
     }
     public void init(){
+        userController = new UserController();
         boardController = new BoardController();
+
         btnDelete = findViewById(R.id.btnDelete);
         btnUpdateForm = findViewById(R.id.btnUpdateForm);
+
         tvDetailUsername = findViewById(R.id.tvDetailUsername);
         tvDetailEmail = findViewById(R.id.tvDetailEmail);
         tvDetailCategory = findViewById(R.id.tvDetailCategory);
@@ -71,11 +80,21 @@ public class CBoardDetailActivity extends AppCompatActivity {
         tvDetailContent = findViewById(R.id.tvDetailContent);
         tvViewCount = findViewById(R.id.tvViewCount);
         tvLikeCount = findViewById(R.id.tvLikeCount);
+        tvLike = findViewById(R.id.tvLike);
+
         ic_Like = findViewById(R.id.ic_Like);
         ic_Reply = findViewById(R.id.ic_Reply);
     }
 
     public void initLr(){
+        if(SessionUser.sessionId==null){
+            ic_Like.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    return true;
+                }
+            });
+        }
         btnUpdateForm.setOnClickListener(v->{
             Intent intent = new Intent(
                     mContext,
@@ -104,6 +123,36 @@ public class CBoardDetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<CMRespDto<CBoard>> call, Throwable t) {
+
+                }
+            });
+        });
+
+        ic_Like.setOnClickListener(v->{
+            Fav fav = new Fav(SessionUser.user.getId(),cBoard.getId());
+            Log.d(TAG, "initLr: "+ fav);
+            userController.likeById(fav).enqueue(new Callback<CMRespDto<Fav>>() {
+                @Override
+                public void onResponse(Call<CMRespDto<Fav>> call, Response<CMRespDto<Fav>> response) {
+                    CMRespDto<Fav> cm = response.body();
+                    if(cm.getCode()==1){
+                        Toast.makeText(getApplicationContext(), "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
+                        ic_Like.setSelected(true);
+                        tvLike.setText("좋아요 취소");
+                        onResume();
+                    } else if (cm.getCode()==-1){
+                        Toast.makeText(getApplicationContext(), "좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
+                        ic_Like.setSelected(false);
+                        tvLike.setText("좋아요");
+                        onResume();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "로그인 정보가 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<CMRespDto<Fav>> call, Throwable t) {
 
                 }
             });
