@@ -69,9 +69,9 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<CMRespDto<User>> call, Response<CMRespDto<User>> response) {
                     CMRespDto<User> cm = response.body();
                     Headers header = response.headers();
+                    if (cm.getCode()==1) {
                     String cookie = header.get("Set-Cookie");
                     cookie = cookie.substring(0,15);
-                    if (cookie.equals("user=authorized")) {
                         Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
                         SessionUser.user = cm.getData();
                         SessionUser.sessionId = cookie;

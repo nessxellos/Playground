@@ -51,6 +51,9 @@ public class UserInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
+        init();
+        intiLr();
+        initSetting();
         if (SessionUser.sessionId!=null){
             initData();
         } else {
@@ -66,9 +69,6 @@ public class UserInfoActivity extends AppCompatActivity {
                 }
             }).create().show();
         }
-        init();
-        intiLr();
-        initSetting();
     }
 
     public void init(){
