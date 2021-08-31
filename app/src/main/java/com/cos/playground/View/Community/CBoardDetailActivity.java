@@ -128,7 +128,7 @@ public class CBoardDetailActivity extends AppCompatActivity {
                 String date = transFormat.format(from);
                 cBoard = cm.getData();
                 tvDetailTitle.setText(cm.getData().getTitle());
-                tvDetailEmail.setText("");
+                tvDetailEmail.setText(cm.getData().getUsermail());
                 tvDetailCategory.setText(cm.getData().getCategory());
                 tvDetailRegdate.setText(date);
                 tvDetailUsername.setText(cm.getData().getWriter());

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
@@ -17,9 +18,10 @@ import com.cos.playground.config.SessionUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnJoin, btnLogin, btnWrite, btnInfo, btnBoardlist;
+    private Button btnLogin, btnWrite, btnInfo, btnBoardlist;
     private static final String TAG = "MainActivity";
     private MainActivity mContext = MainActivity.this;
+    private TextView btnJoin;
 
     @Override
     protected void onResume() {

@@ -20,6 +20,5 @@ public class CBoard implements Serializable {
     private String writer;
     private List<Comment> comments;
     private String category;
-
-
+    private String usermail;
 }
