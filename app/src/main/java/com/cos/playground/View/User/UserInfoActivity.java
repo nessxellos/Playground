@@ -10,6 +10,8 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,8 +22,10 @@ import com.cos.playground.Controller.DTO.RemoveDto;
 import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
+import com.cos.playground.View.BottomNavbar;
 import com.cos.playground.View.auth.MainActivity;
 import com.cos.playground.config.SessionUser;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,11 +33,12 @@ import retrofit2.Response;
 
 public class UserInfoActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 1;
     private static final String TAG = "UserInfo";
     private UserInfoActivity mContext = UserInfoActivity.this;
 
     private Button btnUpdateInfo, btnLogout, btnRemove, btnLikeboard,
-                    btnBookmarked, btnMyboard, btnMyreply;
+                    btnMyboard, btnMyreply;
     private ImageView ivUserProfile;
     private TextView tvUsername, tvPhone, tvEmail, tvCareer;
 
@@ -46,9 +51,24 @@ public class UserInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
 
+        if (SessionUser.sessionId!=null){
+            initData();
+        } else {
+            new AlertDialog.Builder(mContext)
+                    .setTitle("로그인 후 이용가능합니다.").setMessage("")
+                    .setNeutralButton("확인",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(
+                            mContext,
+                            MainActivity.class
+                    );
+                    startActivity(intent);
+                }
+            }).create().show();
+        }
         init();
         intiLr();
-        initData();
+        initSetting();
     }
 
     public void init(){
@@ -56,7 +76,6 @@ public class UserInfoActivity extends AppCompatActivity {
         btnUpdateInfo = findViewById(R.id.btnUpdateInfo);
         btnRemove = findViewById(R.id.btnRemove);
         btnLikeboard = findViewById(R.id.btnLikeboard);
-        btnBookmarked = findViewById(R.id.btnBookmarked);
         btnMyboard = findViewById(R.id.btnMyboard);
         btnMyreply = findViewById(R.id.btnMyreply);
 
@@ -160,6 +179,14 @@ public class UserInfoActivity extends AppCompatActivity {
         tvCareer.setText(SessionUser.user.getCareer());
         tvEmail.setText(SessionUser.user.getEmail());
         tvPhone.setText(SessionUser.user.getPhone());
+    }
+
+    public void initSetting(){
+        BottomNavigationView bn = findViewById(R.id.bottomNavigation);
+        BottomNavbar.enableBottomNav(mContext, bn);
+        Menu menu = bn.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 
 }

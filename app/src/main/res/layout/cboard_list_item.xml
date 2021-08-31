@@ -14,35 +14,39 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvCBoardNum"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="9dp"
             android:text="번호"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvCBoardWriter"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="39dp"
             android:text="번호"
             android:textSize="18dp"
             app:layout_constraintStart_toStartOf="@+id/tvCBoardNum"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvCBoardTitle"
-            android:layout_width="0dp"
+            android:layout_width="320dp"
             android:layout_height="25dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:text="제목입니다"
             android:textSize="18dp"
@@ -52,11 +56,12 @@
 
         <TextView
             android:id="@+id/tvCBoardViewCount"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginEnd="48dp"
             android:layout_marginBottom="64dp"
             android:layout_weight="1"
+            android:fontFamily="@font/esamanrumedium"
             android:text="조회수"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"

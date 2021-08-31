@@ -5,19 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
+import com.cos.playground.View.BottomNavbar;
 import com.cos.playground.View.Community.CBoardListActivity;
 import com.cos.playground.View.Community.CBoardWriteActivity;
 import com.cos.playground.View.User.UserInfoActivity;
 import com.cos.playground.config.SessionUser;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 1;
     private Button btnLogin, btnInfo, btnBoardlist;
     private static final String TAG = "MainActivity";
     private MainActivity mContext = MainActivity.this;
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         initLr();
+        initSetting();
     }
 
     private void init(){
@@ -92,5 +98,13 @@ public class MainActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
+    }
+
+    public void initSetting(){
+        BottomNavigationView bn = findViewById(R.id.bottomNavigation);
+        BottomNavbar.enableBottomNav(mContext, bn);
+        Menu menu = bn.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 }

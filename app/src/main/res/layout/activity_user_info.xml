@@ -24,11 +24,12 @@
             android:background="@drawable/card_bg">
 
             <TextView
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tvUsername"
                 android:layout_width="150dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="44dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="9dp"
                 android:text="이름"
                 android:textColor="#5600D1"
                 android:textFontWeight="3"
@@ -37,6 +38,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tvPhone"
                 android:layout_width="150dp"
                 android:layout_height="25dp"
@@ -48,6 +50,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tvEmail"
                 android:layout_width="150dp"
                 android:layout_height="25dp"
@@ -89,6 +92,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginStart="20dp"
@@ -107,6 +111,7 @@
     </LinearLayout>
 
         <Button
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/btnLikeboard"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -120,19 +125,7 @@
             />
 
     <Button
-        android:id="@+id/btnBookmarked"
-        android:textSize="17dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:text="북마크한 게시글"
-        android:textColor="#979797"
-        style="?attr/materialButtonOutlinedStyle"
-        />
-
-    <Button
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/btnMyboard"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -146,6 +139,7 @@
         />
 
     <Button
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/btnMyreply"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -159,6 +153,7 @@
         />
 
     <Button
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/btnUpdateInfo"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -172,6 +167,7 @@
         />
 
     <Button
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/btnRemove"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -185,13 +181,20 @@
         />
 
     <Button
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="30dp"
+        android:textSize="17dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
         android:text="로그아웃"
-        app:layout_constraintStart_toEndOf="@+id/btnUpdateInfo"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#979797"
+        style="?attr/materialButtonOutlinedStyle"
+        />
+
+
+    <include layout="@layout/bottom_bar"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

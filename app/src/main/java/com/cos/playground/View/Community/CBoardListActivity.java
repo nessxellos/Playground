@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,9 +15,11 @@ import com.cos.playground.Controller.BoardController;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.R;
+import com.cos.playground.View.BottomNavbar;
 import com.cos.playground.View.Community.adapter.CBoardListAdapter;
 import com.cos.playground.View.auth.LoginActivity;
 import com.cos.playground.config.SessionUser;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -25,6 +29,7 @@ import retrofit2.Response;
 
 public class CBoardListActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM =1;
     private static final String TAG = "CBoardList";
     private CBoardListActivity mContext = CBoardListActivity.this;
 
@@ -57,6 +62,7 @@ public class CBoardListActivity extends AppCompatActivity {
         initLr();
         initAdapter();
         initData();
+        initSetting();
     }
 
     public void init() {
@@ -112,4 +118,11 @@ public class CBoardListActivity extends AppCompatActivity {
         });
     }
 
+    public void initSetting(){
+        BottomNavigationView bn = findViewById(R.id.bottomNavigation);
+        BottomNavbar.enableBottomNav(mContext, bn);
+        Menu menu = bn.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
+    }
 }

@@ -34,18 +34,19 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvDetailUsername"
             android:layout_width="150dp"
             android:layout_height="25dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="92dp"
-            android:fontFamily="monospace"
             android:text="username"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvDetailEmail"
             android:layout_width="200dp"
             android:layout_height="20dp"
@@ -62,9 +63,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="15dp">
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvDetailCategory"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
@@ -77,6 +79,8 @@
             android:id="@+id/tvDetailRegdate"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="36dp"
+            android:fontFamily="@font/esamanrumedium"
             android:text="작성일 :"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -84,18 +88,20 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/tvDetailTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:textSize="25dp"
         android:textColor="@color/black"
         android:text="글 제목"/>
 
 
     <TextView
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/tvDetailContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,11 +136,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="9dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp">
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvViewCount"
             android:layout_width="100dp"
             android:layout_height="match_parent"
@@ -143,6 +150,7 @@
             tools:layout_editor_absoluteY="0dp" />
 
         <TextView
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/tvLikeCount"
             android:layout_width="70dp"
             android:layout_height="match_parent"
@@ -178,11 +186,12 @@
         <TextView
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/esamanrumedium"
             android:text="좋아요"
             android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/ic_Like"
-            tools:layout_editor_absoluteY="5dp" />
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/ic_Reply"
@@ -198,6 +207,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
+            android:fontFamily="@font/esamanrumedium"
             android:text="댓글쓰기"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -213,6 +223,7 @@
         android:layout_marginEnd="10dp">
 
         <Button
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/btnUpdateForm"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="110dp"
@@ -225,6 +236,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
 
         <Button
+            android:fontFamily="@font/esamanrumedium"
             android:id="@+id/btnDelete"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="110dp"

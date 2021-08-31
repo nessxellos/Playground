@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.auth.LoginActivity">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EDEBEB"
-    tools:context=".View.auth.LoginActivity">
-
+    android:layout_weight="9">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayoutCompat"
@@ -25,6 +30,7 @@
             app:startIconDrawable="@drawable/ic_username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tfUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,6 +46,7 @@
             app:startIconDrawable="@drawable/ic_password">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tfPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,6 +67,7 @@
 
 
             <Button
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/btnLogin"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
@@ -82,6 +90,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <TextView
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/tvFindId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
 
     <TextView
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/tvFindPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,6 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
 
     <TextView
+        android:fontFamily="@font/esamanrumedium"
         android:id="@+id/tvJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -128,3 +139,11 @@
         app:srcCompat="@mipmap/playground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    <include layout="@layout/bottom_bar"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

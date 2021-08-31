@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +15,9 @@ import com.cos.playground.Controller.DTO.LoginDto;
 import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
+import com.cos.playground.View.BottomNavbar;
 import com.cos.playground.config.SessionUser;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -27,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
     private LoginActivity mContext = LoginActivity.this;
 
     private TextInputEditText tfUsername, tfPassword;
-    private MaterialButton btnLogin;
+    private Button btnLogin;
     private TextView tvFindId, tvFindPw, tvJoin;
+    private static final int ACTIVITY_NUM = 1;
 
     private UserController userController;
 
@@ -40,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
         init();
         initLr();
+        initSetting();
 
     }
 
@@ -109,5 +116,12 @@ public class LoginActivity extends AppCompatActivity {
             );
             mContext.startActivity(intent);
         });
+    }
+    public void initSetting(){
+        BottomNavigationView bn = findViewById(R.id.bottomNavigation);
+        BottomNavbar.enableBottomNav(mContext, bn);
+        Menu menu = bn.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 }

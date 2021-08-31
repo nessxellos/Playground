@@ -27,6 +27,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tfTitle"
                 android:hint="Edit Title"
                 android:maxLines="1"
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tfContent"
                 android:hint="Edit Content"
                 android:inputType="textMultiLine"
@@ -61,6 +63,7 @@
             android:layout_marginStart="20dp">
 
             <Button
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/btnUCBoard"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"

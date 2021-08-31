@@ -43,6 +43,7 @@
                     app:layout_constraintVertical_bias="0.666" />
 
                 <TextView
+                    android:fontFamily="@font/esamanrumedium"
                     android:id="@+id/tvGuideCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tfTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,6 +86,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/tfContent"
                 android:hint="Enter Content"
                 android:inputType="textMultiLine"
@@ -106,6 +109,7 @@
 
 
             <Button
+                android:fontFamily="@font/esamanrumedium"
                 android:id="@+id/btnWrite"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="match_parent"
