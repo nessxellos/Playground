@@ -77,14 +77,15 @@ public class CBoardListAdapter extends RecyclerView.Adapter<CBoardListAdapter.My
     // 1. 뷰홀더 만들기 - 데이터 갈아 끼우는 친구!!
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvCBoardNum, tvCBoardTitle;
+        TextView tvCBoardNum, tvCBoardTitle, tvCBoardViewCount, tvCBoardWriter;
 
         // 앱 구동시에 발동
         public MyViewHolder(View itemView) {
             super(itemView);
             tvCBoardNum = itemView.findViewById(R.id.tvCBoardNum);
             tvCBoardTitle = itemView.findViewById(R.id.tvCBoardTitle);
-
+            tvCBoardViewCount = itemView.findViewById(R.id.tvCBoardViewCount);
+            tvCBoardWriter = itemView.findViewById(R.id.tvCBoardWriter);
             initLr();
         }
 
@@ -104,8 +105,10 @@ public class CBoardListAdapter extends RecyclerView.Adapter<CBoardListAdapter.My
 
         // 앱 구동시에 발동 + 스크롤할 때 발동
         public void setItem(CBoard cBoard){
-            tvCBoardNum.setText(cBoard.getId()+"");
-            tvCBoardTitle.setText(cBoard.getTitle());
+            tvCBoardNum.setText("글번호 : "+cBoard.getId());
+            tvCBoardTitle.setText("제목 : "+cBoard.getTitle());
+            tvCBoardViewCount.setText("조회수 : "+cBoard.getViewCount());
+            tvCBoardWriter.setText("글쓴이 : "+cBoard.getWriter());
         }
     }
 }

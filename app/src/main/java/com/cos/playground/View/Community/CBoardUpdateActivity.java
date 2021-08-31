@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.cos.playground.Controller.BoardController;
 import com.cos.playground.Controller.DTO.BoardUpdateDto;
@@ -25,9 +27,11 @@ public class CBoardUpdateActivity extends AppCompatActivity {
 
     private Button btnUCBoard;
     private TextInputEditText tfTitle, tfContent;
+    private TextView tvUserid;
 
     private BoardController boardController;
     private CBoard cBoard;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +49,17 @@ public class CBoardUpdateActivity extends AppCompatActivity {
         btnUCBoard = findViewById(R.id.btnUCBoard);
         tfTitle = findViewById(R.id.tfTitle);
         tfContent = findViewById(R.id.tfContent);
+        tvUserid = findViewById(R.id.tvUserId);
     }
 
     public void initLr(){
         btnUCBoard.setOnClickListener(v->{
             BoardUpdateDto boardUpdateDto = new BoardUpdateDto(
                     tfTitle.getText().toString(),
-                    tfContent.getText().toString()
+                    tfContent.getText().toString(),
+                    userId
                     );
+//            Log.d(TAG, "initLr: "+tfTitle.getText().toString()+"+"+tfContent.getText().toString()+"+"+cBoard.getId());
             boardController.update(cBoard.getId(), boardUpdateDto).enqueue(new Callback<CMRespDto<CBoard>>() {
                 @Override
                 public void onResponse(Call<CMRespDto<CBoard>> call, Response<CMRespDto<CBoard>> response) {
@@ -81,5 +88,6 @@ public class CBoardUpdateActivity extends AppCompatActivity {
 
         tfTitle.setText(cBoard.getTitle());
         tfContent.setText(cBoard.getContent());
+        userId = cBoard.getUserId();
     }
 }

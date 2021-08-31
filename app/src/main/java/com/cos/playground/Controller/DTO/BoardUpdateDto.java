@@ -11,5 +11,5 @@ public class BoardUpdateDto {
 
     private String title;
     private String content;
-
+    private int userId;
 }
