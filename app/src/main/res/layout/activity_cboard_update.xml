@@ -60,8 +60,6 @@
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp">
 
-
-
             <Button
                 android:id="@+id/btnUCBoard"
                 style="?attr/materialButtonOutlinedStyle"

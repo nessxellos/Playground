@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:background="@color/white">
 
         <ImageView
@@ -55,14 +55,14 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/mainimg"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="7dp"/>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="@color/white"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:orientation="vertical">
 
         <TextView
@@ -83,31 +83,67 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_marginTop="7dp"
+        android:layout_height="200dp"
+        android:orientation="horizontal">
 
+        <TextView
+            android:background="@color/white"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginEnd="2dp"
+            android:layout_height="match_parent"
+            android:text="커뮤니티 인기글"/>
 
-    <Button
-        android:id="@+id/btnWrite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Write" />
+        <TextView
+            android:background="@color/white"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginStart="2dp"
+            android:layout_height="match_parent"
+            android:text="채용 인기글(미구현)"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="17dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="20dp"
+        android:text="로그인"
+        android:textColor="#979797"
+        style="?attr/materialButtonOutlinedStyle"
+        />
 
     <Button
         android:id="@+id/btnInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Userinfo" />
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="17dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:text="내 정보 보기"
+        android:textColor="#979797"
+        style="?attr/materialButtonOutlinedStyle"
+        />
 
     <Button
         android:id="@+id/btnBoardlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="게시판" />
-
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="17dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:text="커뮤니티 게시판"
+        android:textColor="#979797"
+        style="?attr/materialButtonOutlinedStyle"
+        />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

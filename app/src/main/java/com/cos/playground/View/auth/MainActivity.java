@@ -18,7 +18,7 @@ import com.cos.playground.config.SessionUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnLogin, btnWrite, btnInfo, btnBoardlist;
+    private Button btnLogin, btnInfo, btnBoardlist;
     private static final String TAG = "MainActivity";
     private MainActivity mContext = MainActivity.this;
     private TextView btnJoin;
@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if(SessionUser.sessionId==null){
             btnInfo.setVisibility(View.GONE);
-            btnWrite.setVisibility(View.GONE);
         } else {
             btnInfo.setVisibility(View.VISIBLE);
-            btnWrite.setVisibility(View.VISIBLE);
         }
         if(SessionUser.sessionId!=null){
             btnJoin.setVisibility(View.GONE);
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         btnJoin = findViewById(R.id.btnJoin);
         btnLogin = findViewById(R.id.btnLogin);
-        btnWrite = findViewById(R.id.btnWrite);
         btnInfo = findViewById(R.id.btnInfo);
         btnBoardlist = findViewById(R.id.btnBoardlist);
         // 로그인 세션 없을시 버튼 비활성화
@@ -78,14 +75,7 @@ public class MainActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         });
-        btnWrite.setOnClickListener(v->{
-            Intent intent = new Intent(
-                    mContext,
-                    CBoardWriteActivity.class
-            );
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        });
+
         btnInfo.setOnClickListener(v->{
             Intent intent = new Intent(
                     mContext,

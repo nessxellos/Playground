@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class CBoardWriteActivity extends AppCompatActivity {
     private static final String TAG = "CBoardWrite";
     private CBoardWriteActivity mContext = CBoardWriteActivity.this;
 
-    private MaterialButton btnWrite;
+    private Button btnWrite;
     private Spinner spinner;
     private TextInputEditText tfTitle, tfContent;
     private TextView tvSelectCategory;
