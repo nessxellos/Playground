@@ -107,43 +107,55 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <Button
-        android:id="@+id/btnLogin"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="17dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="20dp"
-        android:text="로그인"
-        android:textColor="#979797"
-        style="?attr/materialButtonOutlinedStyle"
-        />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_marginTop="7dp">
+
+        <Button
+            android:id="@+id/btnBoardlist"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="17dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="커뮤니티 게시판"
+            android:textColor="#979797"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:background="#EDEBEB"
+            />
 
     <Button
         android:id="@+id/btnInfo"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="17dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="내 정보 보기"
         android:textColor="#979797"
         style="?attr/materialButtonOutlinedStyle"
         />
 
-    <Button
-        android:id="@+id/btnBoardlist"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textSize="17dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:text="커뮤니티 게시판"
-        android:textColor="#979797"
-        style="?attr/materialButtonOutlinedStyle"
-        />
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="17dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="로그인"
+            android:textColor="#979797"
+            style="?attr/materialButtonOutlinedStyle"
+            />
 
+    </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
