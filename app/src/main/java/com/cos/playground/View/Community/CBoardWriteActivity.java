@@ -74,7 +74,9 @@ public class CBoardWriteActivity extends AppCompatActivity {
         btnWrite.setOnClickListener(v->{
             String title = tfTitle.getText().toString().trim();
             String content = tfContent.getText().toString().trim();
-            String category = tvSelectCategory.getText().toString();
+            String category = tvSelectCategory.getText().toString().trim();
+            Log.d(TAG, "initLr: "+category);
+            Log.d(TAG, "initLr: "+SessionUser.user.getId());
 
             boolean cancel = false;
             View focusView = null;

@@ -11,7 +11,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="50dp"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tfTitle"
-                android:hint="Enter Title"
+                android:hint="Edit Title"
                 android:maxLines="1"
                 android:background="@color/white"
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tfContent"
-                android:hint="Enter Content"
+                android:hint="Edit Content"
                 android:inputType="textMultiLine"
                 android:background="@color/white"
                 android:layout_width="match_parent"
@@ -51,11 +51,31 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--버튼 높이 60 고정-->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnUCBoard"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="수정완료" />
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp">
+
+
+
+            <Button
+                android:id="@+id/btnUCBoard"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="수정 완료"
+                android:textColor="#979797"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <!--간격 높이 10 고정-->
         <View

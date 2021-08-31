@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.cos.playground.R;
 import com.cos.playground.View.Community.CBoardDetailActivity;
-import com.cos.playground.View.Community.RBoardDetailActivity;
 import com.cos.playground.View.User.UserInfoActivity;
 import com.cos.playground.View.auth.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,7 +32,7 @@ public class BottomNavbar {
                 } else if (item.getItemId() == R.id.bottom_hire) {
                     Intent intent = new Intent(
                             context,
-                            RBoardDetailActivity.class
+                            MainActivity.class
                     );
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     context.startActivity(intent);

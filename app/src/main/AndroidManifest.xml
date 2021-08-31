@@ -22,9 +22,6 @@
             android:name=".View.Community.CBoardUpdateActivity"
             android:exported="true" />
         <activity
-            android:name=".View.Community.RBoardListActivity"
-            android:exported="true" />
-        <activity
             android:name=".View.Community.CBoardListActivity"
             android:exported="true" />
         <activity
@@ -41,9 +38,6 @@
             android:exported="true" />
         <activity
             android:name=".View.Community.CBoardDetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".View.Community.RBoardDetailActivity"
             android:exported="true" />
         <activity
             android:name=".View.User.UserInfoActivity"

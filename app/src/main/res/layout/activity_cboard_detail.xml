@@ -20,7 +20,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             app:cardCornerRadius="100dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,18 +38,18 @@
             android:layout_width="150dp"
             android:layout_height="25dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="128dp"
+            android:layout_marginEnd="92dp"
+            android:fontFamily="monospace"
             android:text="username"
             android:textSize="20dp"
-            android:fontFamily="monospace"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvDetailEmail"
-            android:layout_width="250dp"
+            android:layout_width="200dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="28dp"
+            android:layout_marginEnd="42dp"
             android:layout_marginTop="3dp"
             android:text="email"
             android:textSize="15dp"
@@ -209,7 +209,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp">
 
         <Button
             android:id="@+id/btnUpdateForm"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.cos.playground.Controller.BoardController;
 import com.cos.playground.Controller.DTO.BoardUpdateDto;
@@ -22,7 +23,7 @@ public class CBoardUpdateActivity extends AppCompatActivity {
     private static final String TAG = "cBoardUp";
     private CBoardUpdateActivity mContext = CBoardUpdateActivity.this;
 
-    private MaterialButton btnUCBoard;
+    private Button btnUCBoard;
     private TextInputEditText tfTitle, tfContent;
 
     private BoardController boardController;
