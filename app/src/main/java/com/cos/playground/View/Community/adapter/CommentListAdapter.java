@@ -1,0 +1,175 @@
+package com.cos.playground.View.Community.adapter;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.cos.playground.Controller.CommentController;
+import com.cos.playground.Controller.DTO.CMRespDto;
+import com.cos.playground.Controller.DTO.CommentDto;
+import com.cos.playground.Controller.DTO.DelCoDto;
+import com.cos.playground.Model.Comment;
+import com.cos.playground.Model.User;
+import com.cos.playground.R;
+import com.cos.playground.View.Community.CBoardDetailActivity;
+import com.cos.playground.config.SessionUser;
+import com.cos.playground.service.CommentService;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.ViewHolders> {
+
+    private static final String TAG = "CommentList";
+    private CommentListAdapter commentListAdapter = this;
+    private CBoardDetailActivity mContext;
+
+    private CommentController commentController;
+
+    public CommentListAdapter(CBoardDetailActivity mContext) {this.mContext = mContext;}
+
+    private List<Comment> comments = new ArrayList<>();
+
+    public void addItems(List<Comment> comments){
+        this.comments = comments;
+        Log.d(TAG, "addItems: size : "+comments.size());
+        notifyDataSetChanged();
+    }
+
+    public void addItem(Comment comment){
+        this.comments.add(comment);
+        notifyDataSetChanged();
+    }
+
+    public List<Comment> getItems(){
+        return comments;
+    }
+
+    public void removeItem(int index){
+        comments.remove(index);
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public ViewHolders onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.comment_list_view, parent, false);
+
+        return new ViewHolders(view);
+    }
+
+    @Override
+    public void onBindViewHolder(CommentListAdapter.ViewHolders holder, int position) {
+        Comment comment = comments.get(position);
+        holder.setItem(comment);
+    }
+
+    @Override
+    public int getItemCount() {
+        return comments.size();
+    }
+
+    public class ViewHolders extends RecyclerView.ViewHolder {
+
+        TextView commentUser,commentContent,tvCommentUd,tvCommentDel,commentDate,tvCommentId,tvCBoardId;
+
+        public ViewHolders(View itemView){
+            super(itemView);
+            commentUser = itemView.findViewById(R.id.commentUser);
+            commentContent = itemView.findViewById(R.id.commentContent);
+            tvCommentUd = itemView.findViewById(R.id.tvCommentUd);
+            tvCommentDel = itemView.findViewById(R.id.tvCommentDel);
+            commentDate = itemView.findViewById(R.id.commentDate);
+            tvCommentId = itemView.findViewById(R.id.tvCommentId);
+            tvCBoardId = itemView.findViewById(R.id.tvCBoardId);
+            commentController = new CommentController();
+            initLr();
+        }
+
+        public void setItem(Comment comment){
+            commentUser.setText(comment.getUsername());
+            commentContent.setText(comment.getContent());
+            Date form = comment.getRegdate();
+            SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String date = transFormat.format(form);
+            commentDate.setText(date);
+            String cid = String.valueOf(comment.getCid());
+            tvCommentId.setText(cid);
+            String bid = String.valueOf(comment.getBoardId());
+            tvCBoardId.setText(bid);
+        }
+
+        private void initLr(){
+            if(SessionUser.sessionId==null){
+                tvCommentUd.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        return true;
+                    }
+                });
+                tvCommentDel.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        return true;
+                    }
+                });
+            }
+
+            tvCommentDel.setOnClickListener(v->{
+                int cid = Integer.parseInt(tvCommentId.getText().toString());
+                DelCoDto delCoDto = new DelCoDto(SessionUser.user.getId());
+                new AlertDialog.Builder(mContext).setTitle("댓글을 삭제하시겠습니까?").setMessage("")
+                        .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                commentController.deleteByCid(cid, delCoDto).enqueue(new Callback<CMRespDto<User>>() {
+                                    @Override
+                                    public void onResponse(Call<CMRespDto<User>> call, Response<CMRespDto<User>> response) {
+                                        CMRespDto<User> cm = response.body();
+                                        if(cm.getCode()==1){
+                                            new AlertDialog.Builder(mContext).setTitle("댓글삭제 완료")
+                                                    .setMessage("").setNeutralButton("확인", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                }
+                                            }).create().show();
+                                            Intent intent = new Intent(
+                                              mContext,
+                                              CBoardDetailActivity.class
+                                            );
+                                            mContext.startActivity(intent);
+                                        } else{
+                                            Toast.makeText(mContext, "로그인 정보가 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                    @Override
+                                    public void onFailure(Call<CMRespDto<User>> call, Throwable t) {
+
+                                    }
+                                });
+
+                            };
+                }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }}).show();
+                });
+            tvCommentUd.setOnClickListener(v->{
+
+            });
+        }
+    }
+}

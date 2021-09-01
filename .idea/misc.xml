@@ -10,6 +10,7 @@
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/btn_selector.xml" value="0.13489583333333333" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/btn_shadow.xml" value="0.13489583333333333" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/card_bg.xml" value="0.13489583333333333" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/dialog_margin.xml" value="0.19814814814814816" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/ic_home.xml" value="0.2109375" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2109375" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/ic_main_background.xml" value="0.2109375" />
@@ -17,7 +18,7 @@
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/drawable/like_status.xml" value="0.24259259259259258" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/font/katuri.xml" value="0.18888888888888888" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_detail.xml" value="0.25" />
-        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_list.xml" value="0.25" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_list.xml" value="0.205" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_update.xml" value="0.16" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_cboard_write.xml" value="0.25" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_find_id.xml" value="0.11875" />
@@ -26,7 +27,7 @@
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_join.xml" value="0.253077975376197" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_launching_app.xml" value="0.1" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_main2.xml" value="0.1671195652173913" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_rboard_list.xml" value="0.1046875" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_user_info.xml" value="0.25" />
@@ -34,6 +35,7 @@
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/activity_user_update.xml" value="0.25" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/bottom_bar.xml" value="0.33" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/cboard_list_item.xml" value="0.33" />
+        <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/layout/comment_list_view.xml" value="0.5" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/menu/bottom_navbar.xml" value="0.19479166666666667" />
         <entry key="..\:/devtools/androidworkspace/Playground/app/src/main/res/mipmap-anydpi-v26/ic_hire.xml" value="0.2109375" />
       </map>

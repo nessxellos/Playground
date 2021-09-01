@@ -1,7 +1,11 @@
 package com.cos.playground.View.Community;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,20 +13,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cos.playground.Controller.BoardController;
+import com.cos.playground.Controller.CommentController;
 import com.cos.playground.Controller.DTO.CMRespDto;
+import com.cos.playground.Controller.DTO.CommentDto;
 import com.cos.playground.Controller.DTO.DetailDto;
 import com.cos.playground.Controller.DTO.Fav;
 import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.CBoard;
-import com.cos.playground.Model.User;
+import com.cos.playground.Model.Comment;
 import com.cos.playground.R;
 import com.cos.playground.View.BottomNavbar;
+import com.cos.playground.View.Community.adapter.CommentListAdapter;
 import com.cos.playground.config.SessionUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,6 +56,12 @@ public class CBoardDetailActivity extends AppCompatActivity {
 
     private BoardController boardController;
     private UserController userController;
+    private CommentController commentController;
+    private CommentListAdapter commentListAdapter;
+
+    private RecyclerView rvCBoardDetail;
+    private RecyclerView.LayoutManager rvLayoutManager;
+
     private CBoard cBoard;
     private int cBoardId;
 
@@ -62,12 +78,14 @@ public class CBoardDetailActivity extends AppCompatActivity {
 
         init();
         initLr();
+        initAdapter();
         initSetting();
         initbtbar();
     }
     public void init(){
         userController = new UserController();
         boardController = new BoardController();
+        commentController = new CommentController();
 
         btnDelete = findViewById(R.id.btnDelete);
         btnUpdateForm = findViewById(R.id.btnUpdateForm);
@@ -84,11 +102,19 @@ public class CBoardDetailActivity extends AppCompatActivity {
 
         ic_Like = findViewById(R.id.ic_Like);
         ic_Reply = findViewById(R.id.ic_Reply);
+
+        rvCBoardDetail = findViewById(R.id.rvComment);
     }
 
     public void initLr(){
         if(SessionUser.sessionId==null){
             ic_Like.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    return true;
+                }
+            });
+            ic_Reply.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent motionEvent) {
                     return true;
@@ -157,6 +183,57 @@ public class CBoardDetailActivity extends AppCompatActivity {
                 }
             });
         });
+        ic_Reply.setOnClickListener(v->{
+            final EditText et = new EditText(mContext);
+            FrameLayout container = new FrameLayout(mContext);
+            FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+            params.rightMargin = getResources().getDimensionPixelSize(R.dimen.dialog_margin);
+            et.setLayoutParams(params);
+            container.addView(et);
+            final AlertDialog.Builder alt_bld = new AlertDialog.Builder(mContext,R.style.MyAlertDialogStyle);
+            alt_bld.setTitle("댓글을 입력하세요").setIcon(R.drawable.ic_insert_comment).setCancelable(false)
+                    .setView(container).setPositiveButton("확인",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            String comment = et.getText().toString();
+                            CommentDto commentDto = new CommentDto(
+                                    SessionUser.user.getId(), cBoard.getId(), SessionUser.user.getUsername(), comment);
+                            commentController.writeComment(cBoard.getId(), commentDto).enqueue(new Callback<CMRespDto<Comment>>() {
+                                @Override
+                                public void onResponse(Call<CMRespDto<Comment>> call, Response<CMRespDto<Comment>> response) {
+                                    CMRespDto<Comment> cm = response.body();
+                                    if(cm.getCode()==1){
+                                        Toast.makeText(getApplicationContext(), "댓글 등록 성공.", Toast.LENGTH_SHORT).show();
+                                        onResume();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "로그인 정보가 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                @Override
+                                public void onFailure(Call<CMRespDto<Comment>> call, Throwable t) {
+                                    t.printStackTrace();
+                                }
+                            });
+                        }
+                    }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(getApplicationContext(), "댓글작성 취소.", Toast.LENGTH_SHORT).show();
+                }
+            });
+            AlertDialog alert = alt_bld.create();
+            alert.show();
+        });
+    }
+
+    public void initAdapter(){
+        rvLayoutManager = new LinearLayoutManager(
+                mContext, RecyclerView.VERTICAL,false);
+        rvCBoardDetail.setLayoutManager(rvLayoutManager);
+
+        commentListAdapter = new CommentListAdapter(mContext);
+        rvCBoardDetail.setAdapter(commentListAdapter);
     }
 
     public void initbtbar(){
@@ -187,9 +264,9 @@ public class CBoardDetailActivity extends AppCompatActivity {
                     btnDelete.setVisibility(View.GONE);
                     btnUpdateForm.setVisibility(View.GONE);
                 }
-                Date from = cm.getData().getRegdate();
+                Date form = cm.getData().getRegdate();
                 SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String date = transFormat.format(from);
+                String date = transFormat.format(form);
                 cBoard = cm.getData();
                 tvDetailTitle.setText(cm.getData().getTitle());
                 tvDetailEmail.setText(cm.getData().getUsermail());
@@ -199,6 +276,7 @@ public class CBoardDetailActivity extends AppCompatActivity {
                 tvDetailContent.setText(cm.getData().getContent());
                 tvViewCount.setText("조회수 :"+cm.getData().getViewCount());
                 tvLikeCount.setText("좋아요 : "+cm.getData().getFavCount());
+                commentListAdapter.addItems(cm.getData().getComments());
             }
 
             @Override

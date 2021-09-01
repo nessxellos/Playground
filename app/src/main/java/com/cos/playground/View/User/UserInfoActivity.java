@@ -126,7 +126,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     })
                     .show();
             } else{
-                Toast.makeText(getApplicationContext(), "로그인 정보가 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "작성자 정보와 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

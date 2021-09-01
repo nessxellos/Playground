@@ -86,17 +86,49 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_marginTop="7dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_height="150dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:fontFamily="@font/esamanrumedium"
-            android:background="@color/white"
-            android:layout_weight="1"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_marginEnd="2dp"
             android:layout_height="match_parent"
-            android:text="커뮤니티 인기글"/>
+            android:layout_weight="1"
+            android:layout_marginEnd="7dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:fontFamily="@font/esamanrumedium"
+                android:paddingStart="10dp"
+                android:text="커뮤니티 인기글"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/best1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white"
+                android:text="제목: 실화냐"
+                android:paddingStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/best2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white"
+                android:text="제목: True?"
+                android:paddingStart="10dp"
+                app:layout_constraintStart_toStartOf="@id/best1"
+                app:layout_constraintTop_toBottomOf="@+id/best1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:fontFamily="@font/esamanrumedium"
