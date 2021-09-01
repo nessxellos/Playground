@@ -171,6 +171,14 @@ public class UserInfoActivity extends AppCompatActivity {
                 }
             });
         });
+        btnMyreply.setOnClickListener(v->{
+            Intent intent = new Intent(
+                    mContext,
+                    MyCommentActivity.class
+            );
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
     }
 
     public void initData(){

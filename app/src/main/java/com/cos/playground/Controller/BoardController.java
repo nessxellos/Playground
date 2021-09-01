@@ -12,6 +12,7 @@ import com.cos.playground.service.BoardService;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Multipart;
 
 public class BoardController {
 
@@ -27,10 +28,10 @@ public class BoardController {
         return boardService.update(id, boardUpdateDto);
     }
 
-    public Call<CMRespDto<CBoard>> deleteById(int id) { return boardService.deleteById(id);}
+    public Call<CMRespDto<User>> deleteById(int id, User user) { return boardService.deleteById(id, user);}
 
-    public Call<CMRespDto<CBoard>> write(BoardWriteDto boardWriteDto) {
-        return boardService.write(boardWriteDto);
+    public Call<CMRespDto<CBoard>> write(Multipart file, String strBoardDto) {
+        return boardService.write(file,strBoardDto);
     }
 
     public Call<CMRespDto<List<CBoard>>> findAll(){

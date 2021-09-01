@@ -69,6 +69,7 @@
             android:layout_height="23dp"
             android:layout_marginTop="8dp"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:layout_marginStart="20dp"
             android:text="공지사항"/>
 
@@ -79,7 +80,8 @@
             android:textSize="17dp"
             android:layout_marginTop="6dp"
             android:layout_marginStart="20dp"
-            android:text="게시글 제목"/>
+            android:textColor="@color/black"
+            android:text="안드로이드......"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

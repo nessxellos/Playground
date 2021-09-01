@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Playground"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".View.User.MyCommentActivity"
+            android:exported="true" />
+        <activity
             android:name=".View.User.UserUpdateActivity"
             android:exported="true" />
         <activity

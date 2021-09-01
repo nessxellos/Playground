@@ -30,6 +30,7 @@ import com.cos.playground.Controller.DTO.Fav;
 import com.cos.playground.Controller.UserController;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.Model.Comment;
+import com.cos.playground.Model.User;
 import com.cos.playground.R;
 import com.cos.playground.View.BottomNavbar;
 import com.cos.playground.View.Community.adapter.CommentListAdapter;
@@ -131,24 +132,26 @@ public class CBoardDetailActivity extends AppCompatActivity {
         });
 
         btnDelete.setOnClickListener(v->{
-            boardController.deleteById(cBoard.getId()).enqueue(new Callback<CMRespDto<CBoard>>() {
+            User user = new User();
+            user.setId(SessionUser.user.getId());
+            boardController.deleteById(cBoard.getId(), user).enqueue(new Callback<CMRespDto<User>>() {
                 @Override
-                public void onResponse(Call<CMRespDto<CBoard>> call, Response<CMRespDto<CBoard>> response) {
-                    CMRespDto<CBoard> cm = response.body();
+                public void onResponse(Call<CMRespDto<User>> call, Response<CMRespDto<User>> response) {
+                    CMRespDto<User> cm = response.body();
                     if(cm.getCode()!=1){
                         btnDelete.setVisibility(View.GONE);
                         btnUpdateForm.setVisibility(View.GONE);
                     }
                     Intent intent = new Intent(
                             mContext,
-                            CBoardDetailActivity.class
+                            CBoardListActivity.class
                     );
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
 
                 @Override
-                public void onFailure(Call<CMRespDto<CBoard>> call, Throwable t) {
+                public void onFailure(Call<CMRespDto<User>> call, Throwable t) {
 
                 }
             });
@@ -285,6 +288,4 @@ public class CBoardDetailActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

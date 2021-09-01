@@ -14,6 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -24,10 +25,10 @@ public interface CommentService {
     Call<CMRespDto<Comment>> writeComment(@Path("id")int id, @Body CommentDto commentDto);
 
     @PUT("/comment/update/{cid}")
-    Call<CMRespDto<Comment>> updateByCid(@Path("cid")int id, @Body CommentDto commentDto);
+    Call<CMRespDto<Comment>> updateByCid(@Path("cid")int cid, @Body Comment comment);
 
     @POST("/comment/delete/{cid}")
-    Call<CMRespDto<User>> deleteByCid(@Path("cid")int id, @Body DelCoDto delCoDto);
+    Call<CMRespDto<User>> deleteByCid(@Path("cid")int cid, @Body DelCoDto delCoDto);
 
     OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(new SessionInterceptor()).build();

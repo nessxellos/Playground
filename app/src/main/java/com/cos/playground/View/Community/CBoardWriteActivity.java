@@ -20,6 +20,9 @@ import com.cos.playground.Model.CBoard;
 import com.cos.playground.R;
 import com.cos.playground.View.auth.MainActivity;
 import com.cos.playground.config.SessionUser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -72,12 +75,12 @@ public class CBoardWriteActivity extends AppCompatActivity {
             }
         });
 
-        btnWrite.setOnClickListener(v->{
+        btnWrite.setOnClickListener(v -> {
             String title = tfTitle.getText().toString().trim();
             String content = tfContent.getText().toString().trim();
             String category = tvSelectCategory.getText().toString().trim();
-            Log.d(TAG, "initLr: "+category);
-            Log.d(TAG, "initLr: "+SessionUser.user.getId());
+            Log.d(TAG, "initLr: " + category);
+            Log.d(TAG, "initLr: " + SessionUser.user.getId());
 
             boolean cancel = false;
             View focusView = null;
@@ -96,29 +99,44 @@ public class CBoardWriteActivity extends AppCompatActivity {
             if (cancel) {
                 focusView.requestFocus();
             } else {
-                boardController.write(new BoardWriteDto(title, content, category, SessionUser.user.getId())).enqueue(new Callback<CMRespDto<CBoard>>() {
-                    @Override
-                    public void onResponse(Call<CMRespDto<CBoard>> call, Response<CMRespDto<CBoard>> response) {
-                        CMRespDto<CBoard> cm = response.body();
-                        if(cm.getCode()==1){
-                            Toast.makeText(getApplicationContext(), "게시글 작성 완료", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(
-                                    mContext,
-                                    CBoardListActivity.class
-                            );
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                        }
-                    }
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.enable(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT);
+                BoardWriteDto boardWriteDto = new BoardWriteDto(title, content, category, SessionUser.user.getId());
 
-                    @Override
-                    public void onFailure(Call<CMRespDto<CBoard>> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
+                //Object to JSON in String
+                String strBoardDto = null;
+                try {
+                    strBoardDto = mapper.writeValueAsString(boardWriteDto);
+                    Log.d(TAG, "initLr: 파일 테스트중 " + strBoardDto);
+
+
+                    boardController.write(null, strBoardDto).enqueue(new Callback<CMRespDto<CBoard>>() {
+                        @Override
+                        public void onResponse(Call<CMRespDto<CBoard>> call, Response<CMRespDto<CBoard>> response) {
+                            CMRespDto<CBoard> cm = response.body();
+                            if (cm.getCode() == 1) {
+                                Toast.makeText(getApplicationContext(), "게시글 작성 완료", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(
+                                        mContext,
+                                        CBoardListActivity.class
+                                );
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<CMRespDto<CBoard>> call, Throwable t) {
+                            t.printStackTrace();
+                        }
+                    });
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         });
-
 
 
 

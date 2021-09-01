@@ -16,11 +16,11 @@ public class CommentController {
         return commentService.writeComment(id, commentDto);
     }
 
-    public Call<CMRespDto<Comment>> updateByCid(int id, CommentDto commentDto){
-        return commentService.updateByCid(id, commentDto);
+    public Call<CMRespDto<Comment>> updateByCid(int cid, Comment comment){
+        return commentService.updateByCid(cid, comment);
     }
 
-    public Call<CMRespDto<User>> deleteByCid(int id, DelCoDto delCoDto){
-        return commentService.deleteByCid(id, delCoDto);
+    public Call<CMRespDto<User>> deleteByCid(int cid, DelCoDto delCoDto){
+        return commentService.deleteByCid(cid, delCoDto);
     }
 }

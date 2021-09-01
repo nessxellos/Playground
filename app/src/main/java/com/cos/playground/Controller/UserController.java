@@ -5,9 +5,12 @@ import com.cos.playground.Controller.DTO.JoinDto;
 import com.cos.playground.Controller.DTO.Fav;
 import com.cos.playground.Controller.DTO.LoginDto;
 import com.cos.playground.Controller.DTO.RemoveDto;
+import com.cos.playground.Model.Comment;
 import com.cos.playground.Model.User;
 import com.cos.playground.service.AuthService;
 import com.cos.playground.service.UserService;
+
+import java.util.List;
 
 import retrofit2.Call;
 
@@ -28,4 +31,6 @@ public class UserController {
     }
 
     public Call<CMRespDto<Fav>> likeById(Fav fav){ return userService.likeById(fav);}
+
+    public Call<CMRespDto<List<Comment>>> getMyComments(int id){return  userService.getMyComments(id);}
 }

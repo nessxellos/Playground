@@ -1,11 +1,12 @@
 package com.cos.playground.Model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import lombok.Data;
 
 @Data
-public class Comment {
+public class Comment implements Serializable {
 
     private int cid;
     private int userId;

@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +50,6 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
 
     public void addItems(List<Comment> comments){
         this.comments = comments;
-        Log.d(TAG, "addItems: size : "+comments.size());
         notifyDataSetChanged();
     }
 
@@ -158,17 +159,58 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
                                     }
                                     @Override
                                     public void onFailure(Call<CMRespDto<User>> call, Throwable t) {
-
+                                        t.printStackTrace();
                                     }
                                 });
-
                             };
                 }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                     }}).show();
                 });
             tvCommentUd.setOnClickListener(v->{
-
+                final EditText et = new EditText(mContext);
+                FrameLayout container = new FrameLayout(mContext);
+                FrameLayout.LayoutParams params = new  FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                et.setLayoutParams(params);
+                container.addView(et);
+                final AlertDialog.Builder alt_bld = new AlertDialog.Builder(mContext,R.style.MyAlertDialogStyle);
+                alt_bld.setTitle("수정할 내용을 입력하세요").setIcon(R.drawable.ic_insert_comment).setCancelable(false)
+                        .setView(container).setPositiveButton("수정하기",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                String content = et.getText().toString();
+                                Comment comment = new Comment();
+                                comment.setContent(content);
+                                comment.setUserId(SessionUser.user.getId());
+                                int cid = Integer.parseInt(tvCommentId.getText().toString());
+                                commentController.updateByCid(cid, comment).enqueue(new Callback<CMRespDto<Comment>>() {
+                                    @Override
+                                    public void onResponse(Call<CMRespDto<Comment>> call, Response<CMRespDto<Comment>> response) {
+                                        CMRespDto<Comment> cm = response.body();
+                                        if(cm.getCode()==1){
+                                            Toast.makeText(mContext, "댓글 수정 성공.", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(
+                                                    mContext,
+                                                    CBoardDetailActivity.class
+                                            );
+                                            mContext.startActivity(intent);                                        } else {
+                                            Toast.makeText(mContext, "로그인 정보가 유효하지 않습니다.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                    @Override
+                                    public void onFailure(Call<CMRespDto<Comment>> call, Throwable t) {
+                                        t.printStackTrace();
+                                    }
+                                });
+                            }
+                        }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(mContext, "댓글수정 취소.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                AlertDialog alert = alt_bld.create();
+                alert.show();
             });
         }
     }
