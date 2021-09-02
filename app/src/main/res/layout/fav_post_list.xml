@@ -26,7 +26,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/esamanrumedium"
             android:text="번호"
-            android:textSize="18dp"
+            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/esamanrumedium"
             android:text="글 번호 :"
-            android:textSize="18dp"
+            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,23 +50,24 @@
             android:fontFamily="@font/esamanrumedium"
             android:text="글쓴이 :"
             android:textSize="18dp"
+            android:visibility="gone"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tvFavPostTitle"
-            android:layout_width="220dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="37dp"
+            android:layout_width="330dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="33dp"
             android:layout_weight="1"
             android:fontFamily="@font/esamanrumedium"
             android:text="제목입니다"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tvFavPostViewCount"
@@ -103,7 +104,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/esamanrumedium"
             android:text="작성일:"
-            android:textSize="14dp"
+            android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
