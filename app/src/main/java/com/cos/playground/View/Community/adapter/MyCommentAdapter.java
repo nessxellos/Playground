@@ -17,9 +17,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cos.playground.Controller.BoardController;
 import com.cos.playground.Controller.CommentController;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Controller.DTO.DelCoDto;
+import com.cos.playground.Controller.DTO.DetailDto;
+import com.cos.playground.Model.CBoard;
 import com.cos.playground.Model.Comment;
 import com.cos.playground.Model.User;
 import com.cos.playground.R;
@@ -43,6 +46,7 @@ public class MyCommentAdapter extends RecyclerView.Adapter<MyCommentAdapter.View
     private MyCommentActivity mContext;
 
     private CommentController commentController;
+    private BoardController boardController;
 
     public MyCommentAdapter(MyCommentActivity mContext) {this.mContext = mContext;}
 
@@ -99,7 +103,6 @@ public class MyCommentAdapter extends RecyclerView.Adapter<MyCommentAdapter.View
             tvCommentDate = itemView.findViewById(R.id.tvCommentDate);
             btnGoCboard = itemView.findViewById(R.id.btnGoCboard);
             commentController = new CommentController();
-            initLr();
         }
 
         public void setItem(Comment comment){
@@ -113,12 +116,20 @@ public class MyCommentAdapter extends RecyclerView.Adapter<MyCommentAdapter.View
             tvCBoardId.setText(bid);
             tvComment.setText("내용 : "+comment.getContent());
             tvCommentDate.setText(date);
+            initLr();
+
         }
 
         private void initLr(){
+            int bid = Integer.parseInt(tvCBoardId.getText().toString());
             btnGoCboard.setOnClickListener(v->{
-
-        });
+                Intent intent = new Intent(
+                        mContext,
+                        CBoardDetailActivity.class
+                );
+                intent.putExtra("cBoardId", bid);
+                mContext.startActivity(intent);
+            });
         }
     }
 }
