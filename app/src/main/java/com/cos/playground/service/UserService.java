@@ -4,6 +4,7 @@ import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Controller.DTO.JoinDto;
 import com.cos.playground.Controller.DTO.Fav;
 import com.cos.playground.Controller.DTO.RemoveDto;
+import com.cos.playground.Model.CBoard;
 import com.cos.playground.Model.Comment;
 import com.cos.playground.Model.User;
 import com.cos.playground.config.SessionInterceptor;
@@ -33,6 +34,12 @@ public interface UserService {
 
     @GET("/user/myComment/{userId}")
     Call<CMRespDto<List<Comment>>> getMyComments(@Path("userId")int id);
+
+    @GET("/user/favList/{userId}")
+    Call<CMRespDto<List<CBoard>>> favPostById(@Path("userId")int id);
+
+    @GET("/user/myPost/{userId}")
+    Call<CMRespDto<List<CBoard>>> myPostById(@Path("userId")int id);
 
     OkHttpClient client = new OkHttpClient.Builder()
             .addInterceptor(new SessionInterceptor()).build();

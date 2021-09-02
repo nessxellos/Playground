@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Playground"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".View.User.FavPostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".View.User.MyPostActivity"
+            android:exported="true" />
+        <activity
             android:name=".View.User.MyCommentActivity"
             android:exported="true" />
         <activity

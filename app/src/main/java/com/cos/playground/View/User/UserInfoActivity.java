@@ -171,10 +171,29 @@ public class UserInfoActivity extends AppCompatActivity {
                 }
             });
         });
+
         btnMyreply.setOnClickListener(v->{
             Intent intent = new Intent(
                     mContext,
                     MyCommentActivity.class
+            );
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+
+        btnMyboard.setOnClickListener(v->{
+            Intent intent = new Intent(
+                    mContext,
+                    MyPostActivity.class
+            );
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+
+        btnLikeboard.setOnClickListener(v->{
+            Intent intent = new Intent(
+                    mContext,
+                    FavPostActivity.class
             );
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
