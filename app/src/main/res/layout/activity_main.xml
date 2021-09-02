@@ -110,7 +110,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/best1"
+                android:id="@+id/tvBest1"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
@@ -121,15 +122,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
-                android:id="@+id/best2"
+                android:id="@+id/tvBest2"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="7dp"
                 android:background="@color/white"
                 android:text="제목: True?"
                 android:paddingStart="10dp"
-                app:layout_constraintStart_toStartOf="@id/best1"
-                app:layout_constraintTop_toBottomOf="@+id/best1" />
+                app:layout_constraintStart_toStartOf="@id/tvBest1"
+                app:layout_constraintTop_toBottomOf="@+id/tvBest1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView

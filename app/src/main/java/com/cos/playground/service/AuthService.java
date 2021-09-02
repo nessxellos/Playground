@@ -27,7 +27,6 @@ public interface AuthService {
     @POST("/user/login")
     Call<CMRespDto<User>> login(@Body LoginDto loginDto);
 
-
     // 게시판 조회
     @GET("/cboard/list")
     Call<CMRespDto<List<CBoard>>> findAll();
@@ -36,6 +35,8 @@ public interface AuthService {
     Call<CMRespDto<CBoard>> findById(@Path("id") int id, @Body DetailDto detailDto);
 
 
+    @GET("/cboard/topPost")
+    Call<CMRespDto<List<CBoard>>> getTopPost();
 
     Retrofit retrofit = new Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

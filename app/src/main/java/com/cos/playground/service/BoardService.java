@@ -1,12 +1,15 @@
 package com.cos.playground.service;
 
 
+import com.airbnb.lottie.L;
 import com.cos.playground.Controller.DTO.BoardUpdateDto;
 import com.cos.playground.Controller.DTO.CMRespDto;
 import com.cos.playground.Model.CBoard;
 import com.cos.playground.Model.User;
 import com.cos.playground.config.SessionInterceptor;
 
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -33,7 +36,6 @@ public interface BoardService {
     @Multipart
     @POST("/cboard/write")
     Call<CMRespDto<CBoard>> write(@Part("file") Multipart file, @Part("strBoardDto") String strBoardDto);
-
 
 
 

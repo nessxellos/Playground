@@ -37,4 +37,6 @@ public class BoardController {
     public Call<CMRespDto<List<CBoard>>> findAll(){
         return authService.findAll();
     }
+
+    public Call<CMRespDto<List<CBoard>>> getTopPost(){return authService.getTopPost();}
 }
