@@ -87,6 +87,7 @@ public class CBoardDetailActivity extends AppCompatActivity {
         userController = new UserController();
         boardController = new BoardController();
         commentController = new CommentController();
+        cBoard = new CBoard();
 
         btnDelete = findViewById(R.id.btnDelete);
         btnUpdateForm = findViewById(R.id.btnUpdateForm);
@@ -166,12 +167,10 @@ public class CBoardDetailActivity extends AppCompatActivity {
                     CMRespDto<Fav> cm = response.body();
                     if(cm.getCode()==1){
                         Toast.makeText(getApplicationContext(), "좋아요를 눌렀습니다.", Toast.LENGTH_SHORT).show();
-                        ic_Like.setSelected(true);
                         tvLike.setText("좋아요 취소");
                         onResume();
                     } else if (cm.getCode()==-1){
                         Toast.makeText(getApplicationContext(), "좋아요를 취소했습니다.", Toast.LENGTH_SHORT).show();
-                        ic_Like.setSelected(false);
                         tvLike.setText("좋아요");
                         onResume();
                     } else {
@@ -280,6 +279,7 @@ public class CBoardDetailActivity extends AppCompatActivity {
                 tvViewCount.setText("조회수 :"+cm.getData().getViewCount());
                 tvLikeCount.setText("좋아요 : "+cm.getData().getFavCount());
                 commentListAdapter.addItems(cm.getData().getComments());
+                initFav();
             }
 
             @Override
@@ -287,5 +287,13 @@ public class CBoardDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void initFav(){
+        if (cBoard.getIsFav()!=0){
+            ic_Like.setSelected(true);
+        } else if (cBoard.getIsFav()==0){
+            ic_Like.setSelected(false);
+        }
     }
 }
